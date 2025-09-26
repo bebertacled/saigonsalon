@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saigon Salon - Culture Redefined</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --font-size: 16px;
+            --ocean-blue: #4EA4DD;
+            --soft-blue: #B6DBF2;
+            --nature-green: #7BA449;
+            --rich-brown: #705739;
+            --coral-pink: #F29494;
+        }
+
+        /* Custom font for logo */
+        .font-logo {
+            font-family: "SG85 - CHISON 2", system-ui, -apple-system, sans-serif;
+        }
+
+        /* Custom colors for Tailwind */
+        .text-ocean-blue { color: var(--ocean-blue); }
+        .text-soft-blue { color: var(--soft-blue); }
+        .text-nature-green { color: var(--nature-green); }
+        .text-rich-brown { color: var(--rich-brown); }
+        .text-coral-pink { color: var(--coral-pink); }
+        
+        .bg-ocean-blue { background-color: var(--ocean-blue); }
+        .bg-soft-blue { background-color: var(--soft-blue); }
+        .bg-nature-green { background-color: var(--nature-green); }
+        .bg-rich-brown { background-color: var(--rich-brown); }
+        .bg-coral-pink { background-color: var(--coral-pink); }
+        
+        .border-ocean-blue { border-color: var(--ocean-blue); }
+        .border-soft-blue { border-color: var(--soft-blue); }
+        .border-nature-green { border-color: var(--nature-green); }
+        .border-rich-brown { border-color: var(--rich-brown); }
+        .border-coral-pink { border-color: var(--coral-pink); }
+
+        .hover\:text-ocean-blue:hover { color: var(--ocean-blue); }
+        .hover\:text-coral-pink:hover { color: var(--coral-pink); }
+        .hover\:bg-coral-pink:hover { background-color: var(--coral-pink); }
+
+        /* Gradient backgrounds */
+        .bg-gradient-hero {
+            background: linear-gradient(135deg, var(--ocean-blue) 0%, var(--soft-blue) 50%, var(--nature-green) 100%);
+        }
+        
+        .bg-gradient-newsletter {
+            background: linear-gradient(90deg, var(--nature-green) 0%, var(--rich-brown) 100%);
+        }
+
+        .border-rich-brown-20 {
+            border-color: rgba(112, 87, 57, 0.2);
+        }
+
+        /* Video overlay gradients */
+        .overlay-gradient {
+            background: linear-gradient(135deg, rgba(112, 87, 57, 0.6) 0%, rgba(78, 164, 221, 0.4) 50%, rgba(112, 87, 57, 0.7) 100%);
+        }
+        
+        .texture-overlay {
+            background: linear-gradient(180deg, rgba(112, 87, 57, 0.8) 0%, transparent 50%, rgba(112, 87, 57, 0.3) 100%);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation for scroll indicator */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Hover effects */
+        .group:hover .group-hover\:scale-105 {
+            transform: scale(1.05);
+        }
+        
+        .group:hover .group-hover\:text-ocean-blue {
+            color: var(--ocean-blue);
+        }
+
+        .transition-transform {
+            transition: transform 0.7s ease;
+        }
+        
+        .transition-colors {
+            transition: color 0.3s ease;
+        }
+
+        /* Button disabled state */
+        .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Custom input styling */
+        .custom-input {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(4px);
+        }
+        
+        .custom-input:focus {
+            border-color: white;
+            background-color: rgba(255, 255, 255, 0.3);
+            outline: none;
+        }
+        
+        .custom-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* White input styling */
+        .white-input {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid white;
+        }
+        
+        .white-input:focus {
+            outline: none;
+            border-color: var(--coral-pink);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Header -->
+    <header class="border-b border-rich-brown-20 bg-white">
+        <div class="container mx-auto px-6 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <h1 class="font-logo tracking-wider text-2xl text-rich-brown font-bold">SAIGON SALON</h1>
+                </div>
+                <button onclick="scrollToNewsletter()" class="bg-coral-pink text-white px-6 py-2 rounded hover:opacity-90 transition-opacity font-medium">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden bg-gradient-hero">
+        <!-- Video Background -->
+        <div class="absolute inset-0 z-0">
+            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover" poster="https://images.unsplash.com/photo-1717131259954-ba492b3d8da4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8MTc1ODc4NDY5OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral">
+                <source src="/videos/saigon-urban-life.mp4" type="video/mp4">
+                <source src="/videos/saigon-urban-life.webm" type="video/webm">
+                <img src="https://images.unsplash.com/photo-1717131259954-ba492b3d8da4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8MTc1ODc4NDY5OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" alt="Urban life in Saigon" class="w-full h-full object-cover">
+            </video>
+            
+            <!-- Overlay -->
+            <div class="absolute inset-0 overlay-gradient"></div>
+            <div class="absolute inset-0 texture-overlay"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 container mx-auto px-6">
+            <div class="max-w-4xl">
+                <h2 class="text-6xl md:text-8xl tracking-tight leading-none mb-8 text-white font-black">
+                    CULTURE
+                    <br>
+                    <span class="text-soft-blue">REDEFINED</span>
+                </h2>
+                <p class="text-xl md:text-2xl mb-12 max-w-2xl text-white opacity-95">
+                    A quarterly magazine exploring the intersection of art, culture, and contemporary life through bold storytelling and striking visuals.
+                </p>
+                
+                <!-- Donation Options -->
+                <div class="space-y-6">
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="selectAmount(50)" class="amount-btn px-6 py-4 font-bold bg-white bg-opacity-90 text-rich-brown rounded hover:bg-coral-pink hover:text-white transition-colors">
+                            $50
+                        </button>
+                        <button onclick="selectAmount(100)" class="amount-btn px-6 py-4 font-bold bg-white bg-opacity-90 text-rich-brown rounded hover:bg-coral-pink hover:text-white transition-colors">
+                            $100
+                        </button>
+                        <button onclick="selectAmount(200)" class="amount-btn px-6 py-4 font-bold bg-white bg-opacity-90 text-rich-brown rounded hover:bg-coral-pink hover:text-white transition-colors">
+                            $200
+                        </button>
+                        <button onclick="selectAmount(500)" class="amount-btn px-6 py-4 font-bold bg-white bg-opacity-90 text-rich-brown rounded hover:bg-coral-pink hover:text-white transition-colors">
+                            $500
+                        </button>
+                        <button onclick="showCustomInput()" class="custom-btn px-6 py-4 font-bold bg-white bg-opacity-90 text-rich-brown rounded hover:bg-coral-pink hover:text-white transition-colors">
+                            Custom Amount
+                        </button>
+                    </div>
+
+                    <div id="customInputDiv" class="max-w-xs hidden">
+                        <div class="relative">
+                            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-rich-brown font-bold">$</span>
+                            <input type="number" id="customAmount" placeholder="0" class="white-input pl-8 w-full py-4 rounded text-rich-brown">
+                        </div>
+                    </div>
+
+                    <button id="donateBtn" onclick="handleDonate()" class="bg-coral-pink text-white px-8 py-4 font-bold rounded hover:opacity-90 transition-opacity disabled">
+                        Support Saigon Salon
+                    </button>
+                    
+                    <p class="text-sm opacity-80 text-white max-w-md">
+                        Your contribution supports independent cultural journalism and helps us bring you bold stories from Saigon.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+            <div class="w-6 h-10 border-2 border-soft-blue rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-soft-blue rounded-full mt-2 animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Content -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="mb-16 text-center">
+                <h3 class="text-5xl md:text-6xl tracking-tight mb-4 text-rich-brown font-black">
+                    FEATURED
+                </h3>
+                <div class="w-20 h-2 bg-rich-brown mx-auto"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <article class="group cursor-pointer">
+                    <div class="aspect-[4/5] mb-6 overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1702757782097-69f077f37ed2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8ZmFzaGlvbiUyMHBvcnRyYWl0JTIwbW9kZWx8ZW58MXx8fHwxNzU4NTMzMjE1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" alt="The New Avant-Garde" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="space-y-3">
+                        <div class="text-sm tracking-widest font-bold text-coral-pink">
+                            FASHION
+                        </div>
+                        <h4 class="text-2xl tracking-tight group-hover:text-ocean-blue transition-colors font-bold">
+                            The New Avant-Garde
+                        </h4>
+                        <p class="text-gray-700 leading-relaxed">
+                            Exploring boundary-pushing designers who are reshaping contemporary fashion through radical creativity.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="group cursor-pointer">
+                    <div class="aspect-[4/5] mb-6 overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1622132403461-5b32cf1115b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwdHlwZXdyaXRlciUyMHdyaXRpbmd8ZW58MXx8fHwxNzU4NTkwODY2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" alt="Words as Revolution" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="space-y-3">
+                        <div class="text-sm tracking-widest font-bold text-ocean-blue">
+                            LITERATURE
+                        </div>
+                        <h4 class="text-2xl tracking-tight group-hover:text-ocean-blue transition-colors font-bold">
+                            Words as Revolution
+                        </h4>
+                        <p class="text-gray-700 leading-relaxed">
+                            An intimate conversation with emerging voices who are transforming the literary landscape.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="group cursor-pointer">
+                    <div class="aspect-[4/5] mb-6 overflow-hidden rounded-lg shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1675773518219-e804a7a06000?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwbWFnYXppbmUlMjBlZGl0b3JpYWwlMjBkZXNpZ258ZW58MXx8fHwxNzU4NTkwODY2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" alt="Digital Renaissance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="space-y-3">
+                        <div class="text-sm tracking-widest font-bold text-nature-green">
+                            ART & DESIGN
+                        </div>
+                        <h4 class="text-2xl tracking-tight group-hover:text-ocean-blue transition-colors font-bold">
+                            Digital Renaissance
+                        </h4>
+                        <p class="text-gray-700 leading-relaxed">
+                            How technology is creating new possibilities for artistic expression in the modern age.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="py-20 bg-gradient-newsletter text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <h3 class="text-5xl md:text-6xl tracking-tight mb-6 font-black">
+                    STAY INFORMED
+                </h3>
+                <p class="text-xl md:text-2xl mb-12 opacity-95">
+                    Be the first to know about new issues, exclusive content, and cultural insights.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email" class="custom-input flex-1 px-4 py-3 rounded text-white">
+                    <button onclick="handleNewsletterSubscribe()" class="bg-coral-pink text-white px-8 py-3 rounded hover:opacity-90 transition-opacity whitespace-nowrap font-bold">
+                        Subscribe
+                    </button>
+                </div>
+                
+                <p class="text-sm opacity-80 mt-6">
+                    Quarterly issues. Cancel anytime.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-rich-brown-20 py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="md:col-span-2">
+                    <h4 class="text-2xl tracking-wider mb-6 text-rich-brown font-bold">SAIGON SALON</h4>
+                    <p class="text-gray-700 leading-relaxed max-w-md">
+                        A quarterly publication celebrating the intersection of culture, art, and contemporary life through bold storytelling and striking visuals.
+                    </p>
+                </div>
+                
+                <div>
+                    <h5 class="mb-6 text-ocean-blue font-bold">Support</h5>
+                    <div class="space-y-3">
+                        <a href="#" class="block hover:text-coral-pink transition-colors">Contact</a>
+                        <a href="#" class="block hover:text-coral-pink transition-colors">Submissions</a>
+                        <a href="#" class="block hover:text-coral-pink transition-colors">Press</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-rich-brown-20 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-sm text-gray-600">
+                        © 2025 SAIGON SALON.
+                    </p>
+                    <div class="flex space-x-6 text-sm">
+                        <a href="#" class="hover:text-coral-pink transition-colors">Privacy</a>
+                        <a href="#" class="hover:text-coral-pink transition-colors">Terms</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let selectedAmount = null;
+        let showCustom = false;
+
+        function scrollToNewsletter() {
+            document.getElementById('newsletter').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function selectAmount(amount) {
+            selectedAmount = amount;
+            showCustom = false;
+            
+            // Reset all buttons
+            document.querySelectorAll('.amount-btn, .custom-btn').forEach(btn => {
+                btn.classList.remove('bg-coral-pink', 'text-white', 'border-2', 'border-white');
+                btn.classList.add('bg-white', 'bg-opacity-90', 'text-rich-brown');
+            });
+            
+            // Highlight selected button
+            event.target.classList.remove('bg-white', 'bg-opacity-90', 'text-rich-brown');
+            event.target.classList.add('bg-coral-pink', 'text-white', 'border-2', 'border-white');
+            
+            // Hide custom input
+            document.getElementById('customInputDiv').classList.add('hidden');
+            document.getElementById('customAmount').value = '';
+            
+            // Enable donate button
+            const donateBtn = document.getElementById('donateBtn');
+            donateBtn.classList.remove('disabled');
+        }
+
+        function showCustomInput() {
+            selectedAmount = null;
+            showCustom = true;
+            
+            // Reset all buttons
+            document.querySelectorAll('.amount-btn, .custom-btn').forEach(btn => {
+                btn.classList.remove('bg-coral-pink', 'text-white', 'border-2', 'border-white');
+                btn.classList.add('bg-white', 'bg-opacity-90', 'text-rich-brown');
+            });
+            
+            // Highlight custom button
+            event.target.classList.remove('bg-white', 'bg-opacity-90', 'text-rich-brown');
+            event.target.classList.add('bg-coral-pink', 'text-white', 'border-2', 'border-white');
+            
+            // Show custom input
+            document.getElementById('customInputDiv').classList.remove('hidden');
+            
+            // Update donate button state
+            updateDonateButton();
+        }
+
+        function updateDonateButton() {
+            const customAmount = document.getElementById('customAmount').value;
+            const donateBtn = document.getElementById('donateBtn');
+            
+            if (selectedAmount || (customAmount && parseFloat(customAmount) > 0)) {
+                donateBtn.classList.remove('disabled');
+            } else {
+                donateBtn.classList.add('disabled');
+            }
+        }
+
+        function handleDonate() {
+            const customAmount = document.getElementById('customAmount').value;
+            const amount = selectedAmount || parseFloat(customAmount);
+            
+            if (amount && amount > 0) {
+                alert(`Thank you for your donation of $${amount}!`);
+            }
+        }
+
+        function handleNewsletterSubscribe() {
+            const email = document.getElementById('newsletterEmail').value;
+            if (email) {
+                alert(`Thank you for subscribing with email: ${email}`);
+                document.getElementById('newsletterEmail').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+
+        // Add event listener for custom amount input
+        document.getElementById('customAmount').addEventListener('input', updateDonateButton);
+    </script>
+</body>
+</html>
